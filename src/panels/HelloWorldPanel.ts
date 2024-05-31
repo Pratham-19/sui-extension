@@ -164,6 +164,7 @@ export class HelloWorldPanel {
         switch (command) {
           case "hello":
             // Code that should run in response to the hello message command
+            console.log(text, "uououo");
             window.showInformationMessage(text);
             return;
           // Add more switch case statements here as more webview message commands

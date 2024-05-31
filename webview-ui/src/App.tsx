@@ -1,35 +1,60 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import {
+  VSCodeBadge,
+  VSCodeButton,
+  VSCodeDivider,
+  VSCodeDropdown,
+  VSCodeOption,
+  VSCodePanelTab,
+  VSCodeTextArea,
+  VSCodeTextField,
+} from "@vscode/webview-ui-toolkit/react";
 
 function App() {
-  const [count, setCount] = useState(0)
+  function handleAddBalance() {
+    // Handle add balance logic here
+  }
+
+  function handleDeploy() {
+    // Handle deploy logic here
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+    <main className="flex flex-col items-center">
+      <h1 className="text-2xl font-bold">My Dapp</h1>
+      <VSCodeDivider />
+
+      <div className="flex flex-col items-center">
+        <label className="mb-2">Address:</label>
+        <VSCodeTextField
+          disabled
+          value="0x123456789abcdef"
+          placeholder="Enter your address"
+        />
+
+        <div className="flex items-center mb-4">
+          <label className="mr-4">Tag:</label>
+          <VSCodeDropdown>
+            <VSCodeOption>Devnet</VSCodeOption>
+            <VSCodeOption>Testnet</VSCodeOption>
+          </VSCodeDropdown>
+        </div>
+
+        <div className="flex justify-center mb-4">
+          <label>Balance:</label>
+          <VSCodeBadge>1.23 ETH</VSCodeBadge>
+          <VSCodeButton onClick={handleAddBalance} className="mr-2">
+            Add Balance
+          </VSCodeButton>
+        </div>
+        <VSCodeButton onClick={handleDeploy}>Deploy</VSCodeButton>
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+      <VSCodeDivider />
+
+      <VSCodePanelTab>Logs</VSCodePanelTab>
+      <VSCodeTextArea placeholder="Logs will appear here" />
+    </main>
+  );
 }
 
-export default App
+export default App;
