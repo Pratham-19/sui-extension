@@ -1,8 +1,13 @@
 {
   "name": "suicraft",
   "displayName": "suicraft",
-  "description": "",
+  "description": "SuiCraftt is an AI-powered devtool integrated into VSCode, enabling effortless smart contract development, deployment, and testing for the Sui blockchain",
   "version": "0.0.1",
+  "publisher": "Bitsage",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Pratham-19/sui-extension.git"
+  },
   "engines": {
     "vscode": "^1.89.0"
   },
@@ -28,13 +33,13 @@
     ]
   },
   "scripts": {
-    "install:all": "pnpm install && cd webview-ui && pnpm install",
-    "dev:webview": "cd webview-ui && pnpm run dev",
-    "build:webview": "cd webview-ui && pnpm run build",
-    "vscode:prepublish": "pnpm run compile",
+    "install:all": "npm install && cd webview-ui && npm install",
+    "dev:webview": "cd webview-ui && npm run dev",
+    "build:webview": "cd webview-ui && npm run build",
+    "vscode:prepublish": "npm run compile",
     "compile": "tsc -p ./",
     "watch": "tsc -watch -p ./",
-    "pretest": "pnpm run compile && pnpm run lint",
+    "pretest": "npm run compile && npm run lint",
     "lint": "eslint src --ext ts",
     "test": "vscode-test"
   },
@@ -46,6 +51,7 @@
     "@typescript-eslint/parser": "^7.7.1",
     "@vscode/test-cli": "^0.0.9",
     "@vscode/test-electron": "^2.3.9",
+    "dotenv": "^16.4.5",
     "eslint": "^8.57.0",
     "typescript": "^5.4.5"
   },
@@ -67,8 +73,5 @@
         "icon": "src/assets/test.png"
       }
     ]
-  },
-  "dependencies": {
-    "dotenv": "^16.4.5"
   }
 }
