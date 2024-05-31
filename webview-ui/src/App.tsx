@@ -2,57 +2,60 @@ import {
   VSCodeBadge,
   VSCodeButton,
   VSCodeDivider,
-  VSCodeDropdown,
-  VSCodeOption,
-  VSCodePanelTab,
   VSCodeTextArea,
   VSCodeTextField,
 } from "@vscode/webview-ui-toolkit/react";
+import "./index.css";
+import { useState } from "react";
+import { Loader } from "lucide-react";
 
 function App() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isLoadingBal, setIsLoadingBal] = useState(false);
   function handleAddBalance() {
+    setIsLoadingBal(true);
     // Handle add balance logic here
   }
 
   function handleDeploy() {
+    setIsLoading(true);
     // Handle deploy logic here
   }
 
   return (
-    <main className="flex flex-col items-center">
-      <h1 className="text-2xl font-bold">My Dapp</h1>
+    <main className="flex flex-col items-center my-10 space-y-5 text-lg font-cascadia w-1/2 mx-auto ">
+      <h1 className="text-2xl font-bold">🧙‍♂️ SuiCraft Deployer 🧙‍♂️</h1>
+
       <VSCodeDivider />
 
-      <div className="flex flex-col items-center">
-        <label className="mb-2">Address:</label>
-        <VSCodeTextField
-          disabled
-          value="0x123456789abcdef"
-          placeholder="Enter your address"
-        />
-
-        <div className="flex items-center mb-4">
-          <label className="mr-4">Tag:</label>
-          <VSCodeDropdown>
-            <VSCodeOption>Devnet</VSCodeOption>
-            <VSCodeOption>Testnet</VSCodeOption>
-          </VSCodeDropdown>
-        </div>
-
-        <div className="flex justify-center mb-4">
-          <label>Balance:</label>
-          <VSCodeBadge>1.23 ETH</VSCodeBadge>
-          <VSCodeButton onClick={handleAddBalance} className="mr-2">
-            Add Balance
-          </VSCodeButton>
-        </div>
-        <VSCodeButton onClick={handleDeploy}>Deploy</VSCodeButton>
+      <div className="flex flex-col items-start relative w-1/3">
+        <label className="mb-2 text-base">Address</label>
+        <VSCodeTextField disabled value="0x123456789abcdefdfss" />
+        <VSCodeDivider />
+        <label className="mt-2 mb-2 text-base">Balance: 1.2 SUI</label>
+        <VSCodeButton onClick={handleAddBalance} className="w-full">
+          Add Gas
+          {isLoadingBal && (
+            <Loader className="animate-spin ease-in-out  my-auto ml-2" />
+          )}
+        </VSCodeButton>
+        <VSCodeBadge className="absolute right-0 ">Devnet</VSCodeBadge>
       </div>
 
+      <VSCodeButton onClick={handleDeploy} className="w-1/3 bg-[#4ba721]">
+        Deploy
+        {isLoading && (
+          <Loader className="animate-spin ease-in-out  my-auto ml-2" />
+        )}
+      </VSCodeButton>
+
       <VSCodeDivider />
 
-      <VSCodePanelTab>Logs</VSCodePanelTab>
-      <VSCodeTextArea placeholder="Logs will appear here" />
+      <label className="mb-2 text-base">Logs</label>
+      <VSCodeTextArea
+        placeholder="Logs will appear here"
+        className="w-1/3 min-h-[150px]"
+      />
     </main>
   );
 }
