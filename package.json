@@ -1,6 +1,6 @@
 {
-  "name": "all-move",
-  "displayName": "all-move",
+  "name": "suicraft",
+  "displayName": "suicraft",
   "description": "",
   "version": "0.0.1",
   "engines": {
@@ -16,14 +16,14 @@
   "contributes": {
     "commands": [
       {
-        "command": "hello-world.showHelloWorld",
-        "title": "Test Me",
-        "category": "HOHOHO"
+        "command": "suicraft.showHelloWorld",
+        "title": "Deployer",
+        "category": "SuiCraft"
       },
       {
-        "command": "hello-world.LensAction",
-        "title": "Test Lens",
-        "category": "HOHOHO"
+        "command": "suicraft.LensAction",
+        "title": "Ai Crafter",
+        "category": "SuiCraft"
       }
     ]
   },

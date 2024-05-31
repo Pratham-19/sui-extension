@@ -38,7 +38,7 @@ export class CodeLens implements vscode.CodeLensProvider {
             arguments: [line.text],
             title: "SuiCraft 🤖",
             tooltip: "Write a query to get contracts",
-            command: "hello-world.generateCode",
+            command: "suicraft.generateCode",
           })
         );
       }
@@ -58,7 +58,7 @@ export class CodeLens implements vscode.CodeLensProvider {
 
       // Create a new CodeLens with the generated code
       return new vscode.CodeLens(codeLens.range, {
-        command: "hello-world.insertGeneratedCode",
+        command: "suicraft.insertGeneratedCode",
         arguments: [{ snippet: generatedCode }],
         title: "Insert generated code",
       });

@@ -21,6 +21,7 @@ export const getCode = async (query: string) => {
     }),
     headers: {
       "Content-Type": "application/json",
+      // authorization: `Bearer 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`,
       authorization: `Bearer ${process.env.PERPLEXITY_API_KEY}`,
     },
   });

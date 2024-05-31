@@ -5,25 +5,26 @@ import {
   window,
   SnippetString,
 } from "vscode";
-import { HelloWorldPanel, CodeLens } from "./panels";
+import { SuiCraftPanel, CodeLens } from "./panels";
 import { getCode } from "./utils/getCode";
 import * as dotenv from "dotenv";
-dotenv.config({ path: "../.env" });
+import path from "path";
+dotenv.config({ path: path.join(__dirname, "../.env") });
 
 export function activate(context: ExtensionContext) {
   const codeLensProvider = new CodeLens();
   languages.registerCodeLensProvider("*", codeLensProvider);
 
-  commands.registerCommand("hello-world.generateCode", generateCode);
+  commands.registerCommand("suicraft.generateCode", generateCode);
 
   const showHelloWorldCommand = commands.registerCommand(
-    "hello-world.showHelloWorld",
+    "suicraft.showHelloWorld",
     () => {
-      HelloWorldPanel.render(context.extensionUri);
+      SuiCraftPanel.render(context.extensionUri);
     }
   );
 
-  commands.registerCommand("hello-world.insertGeneratedCode", (args) => {
+  commands.registerCommand("suicraft.insertGeneratedCode", (args) => {
     const editor = window.activeTextEditor;
     console.log(editor, "editor", args);
     if (editor) {
@@ -31,6 +32,7 @@ export function activate(context: ExtensionContext) {
       editor.insertSnippet(snippet, editor.selection.active);
     }
   });
+
   context.subscriptions.push(showHelloWorldCommand);
 }
 
@@ -44,7 +46,6 @@ const generateCode = async (args: string) => {
   if (!editor) {
     return;
   }
-  const document = editor.document;
   const selection = editor.selection;
   let query = args.split("CRAFT:")[1];
   const code = await getCode(query);
