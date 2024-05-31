@@ -17,6 +17,3 @@ SuiCraft is an AI-powered devtool integrated into VSCode, enabling effortless sm
 Meet the team behind GHOat:
 
 - **Pratham Singhal:** Full Stack Developer  / [GitHub](https://github.com/Pratham-19)
-- **Gyana Lakshmi:** Smart Contract Developer / [GitHub](https://github.com/gyan0890)
-- **Chandra Bose:** Frontend Developer / [GitHub](https://github.com/chandrabosep)
-- **Camilo Leon:** Designer  / [Linkedin](https://www.linkedin.com/in/camilo-leon/)
